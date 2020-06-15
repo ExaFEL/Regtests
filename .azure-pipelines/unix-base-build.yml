@@ -24,6 +24,7 @@ steps:
     mkdir -p modules
     cd modules
     ln -s ../s/modules/cctbx_project
+    ln -s ../s/modules/cbflib
   displayName: Build modules path, and link cctbx_project
 
 - script: |
