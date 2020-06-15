@@ -23,7 +23,7 @@ steps:
     cd $(Pipeline.Workspace)
     mkdir -p modules
     cd modules
-    ln -s s/modules/cctbx_project
+    ln -s ../s/modules/cctbx_project
   displayName: Build modules path, and link cctbx_project
 
 - script: |
