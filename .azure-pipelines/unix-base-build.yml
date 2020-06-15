@@ -26,8 +26,8 @@ steps:
     ln -s ../s/modules/cctbx_project
     ln -s ../s/modules/cbflib
     ln -s ../s/modules/dxtbx
-    tar -xvf ../s/modules/modules/ccp4io.gz
-  displayName: Build modules path, and link cctbx_project
+    tar -xvf ../s/modules/ccp4io.gz
+  displayName: Build modules path, and link resources
 
 - script: |
     cd $(Pipeline.Workspace)
