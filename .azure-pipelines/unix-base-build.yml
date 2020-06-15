@@ -31,12 +31,22 @@ steps:
     ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
   displayName: Link bootstrap.py
 
+# install base packages
+- script: |
+    cd $(Pipeline.Workspace)
+    # SYSTEM environment variable breaks OpenSSL builds
+    # https://developercommunity.visualstudio.com/content/problem/602584/openssl-build-error-when-using-pipelines.html
+    unset SYSTEM
+    python modules/cctbx_project/libtbx/auto_build/install_base_packages.py --python-shared --cctbx --cctbx --nproc=4 --skip-if-exists
+  displayName: Install base packages
+
 # install base
 - script: |
     cd $(Pipeline.Workspace)
     # SYSTEM environment variable breaks OpenSSL builds
     # https://developercommunity.visualstudio.com/content/problem/602584/openssl-build-error-when-using-pipelines.html
     unset SYSTEM
+    python modules/cctbx_project/libtbx/auto_build/install_base_packages.py --python-shared --cctbx --cctbx --nproc=4 --skip-if-exists
     python bootstrap.py base --builder=cctbx --nproc=4
   displayName: Install base dependencies
 
