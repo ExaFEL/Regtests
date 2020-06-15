@@ -26,6 +26,7 @@ steps:
     ln -s ../s/modules/cctbx_project
     ln -s ../s/modules/cbflib
     ln -s ../s/modules/dxtbx
+    tar -xvf ../modules/modules/ccp4io.gz
   displayName: Build modules path, and link cctbx_project
 
 - script: |
