@@ -7,3 +7,6 @@
 [submodule "modules/dxtbx"]
 	path = modules/dxtbx
 	url = https://github.com/cctbx/dxtbx.git
+[submodule "modules/boost"]
+	path = modules/boost
+	url = https://github.com/cctbx/boost.git
