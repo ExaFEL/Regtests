@@ -23,6 +23,7 @@ steps:
 - script: |
     cd $(Pipeline.Workspace)
     ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
+    ls
   displayName: Link bootstrap.py
 
 # install base
