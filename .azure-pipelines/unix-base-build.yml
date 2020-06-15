@@ -21,8 +21,10 @@ steps:
   #   displayName: Extract modules tarball
 - script: |
     cd $(Pipeline.Workspace)
-    ln -s s/modules
-  displayName: Link modules into Pipeline.Workspace
+    mkdir -p modules
+    cd modules
+    ln -s s/modules/cctbx_project
+  displayName: Build modules path, and link cctbx_project
 
 - script: |
     cd $(Pipeline.Workspace)
