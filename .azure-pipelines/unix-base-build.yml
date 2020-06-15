@@ -25,6 +25,7 @@ steps:
     cd modules
     ln -s ../s/modules/cctbx_project
     ln -s ../s/modules/cbflib
+    ln -s ../s/modules/dxtbx
   displayName: Build modules path, and link cctbx_project
 
 - script: |
