@@ -8,17 +8,17 @@ steps:
 - checkout: self
   submodules: recursive
 
-- task: DownloadPipelineArtifact@2
-  displayName: Download modules tarball
-  inputs:
-    source: 'current'
-    artifact: modules
-    path: $(Pipeline.Workspace)
-
-- script: |
-    cd $(Pipeline.Workspace)
-    tar -xf modules.tar
-  displayName: Extract modules tarball
+  # - task: DownloadPipelineArtifact@2
+  #   displayName: Download modules tarball
+  #   inputs:
+  #     source: 'current'
+  #     artifact: modules
+  #     path: $(Pipeline.Workspace)
+  # 
+  # - script: |
+  #     cd $(Pipeline.Workspace)
+  #     tar -xf modules.tar
+  #   displayName: Extract modules tarball
 
 - script: |
     cd $(Pipeline.Workspace)
