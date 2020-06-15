@@ -1,3 +1,6 @@
 [submodule "submodules/cctbx_project"]
 	path = modules/cctbx_project
 	url = https://github.com/cctbx/cctbx_project.git
+[submodule "modules/cbflib"]
+	path = modules/cbflib
+	url = https://github.com/yayahjb/cbflib.git
