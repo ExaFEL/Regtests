@@ -5,7 +5,8 @@
 steps:
 
 # download components
-- checkout: none
+- checkout: self
+  submodules: recursive
 
 - task: DownloadPipelineArtifact@2
   displayName: Download modules tarball
