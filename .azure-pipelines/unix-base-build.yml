@@ -19,10 +19,14 @@ steps:
   #     cd $(Pipeline.Workspace)
   #     tar -xf modules.tar
   #   displayName: Extract modules tarball
+- script: |
+    cd $(Pipeline.Workspace)
+    ln -s s/modules
+  displayName: Link modules into Pipeline.Workspace
 
 - script: |
     cd $(Pipeline.Workspace)
-    ln -s s/modules/cctbx_project/libtbx/auto_build/bootstrap.py
+    ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
   displayName: Link bootstrap.py
 
 # install base
