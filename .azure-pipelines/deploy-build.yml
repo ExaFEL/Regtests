@@ -4,7 +4,7 @@ steps:
   - checkout: self
     submodules: recursive
     lfs: true
-    path: ./deploy
+    path: .
 
 
 
@@ -16,7 +16,7 @@ steps:
     displayName: git-deps
 
   - script: |
-        cd ./deploy
+        cd deploy
         # use absolute paths:
         ./conda/install_conda.sh
     displayName: build-conda
