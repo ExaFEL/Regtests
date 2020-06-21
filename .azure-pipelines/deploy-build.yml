@@ -13,6 +13,11 @@ steps:
     displayName: git-deps
 
   - script: |
+      sudo apt install -y mpich
+    displayName: apt-install
+
+
+  - script: |
       cd deploy/conda
       cp ../../install_conda.sh .
       ./install_conda.sh
