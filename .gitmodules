@@ -10,3 +10,6 @@
 [submodule "modules/boost"]
 	path = modules/boost
 	url = https://github.com/cctbx/boost.git
+[submodule "deploy"]
+	path = deploy
+	url = git@github.com:JBlaschke/cctbx_deployment.git
