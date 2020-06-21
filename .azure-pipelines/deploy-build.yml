@@ -1,0 +1,7 @@
+
+steps:
+
+# download components
+- checkout: self
+  submodules: recursive
+  lfs: true
