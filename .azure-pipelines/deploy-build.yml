@@ -13,8 +13,9 @@ steps:
     displayName: git-deps
 
   - script: |
-      cd deploy
-      ./conda/install_conda.sh
+      cd deploy/conda
+      cp ../../install_conda.sh .
+      ./install_conda.sh
     displayName: build-conda
 
 
