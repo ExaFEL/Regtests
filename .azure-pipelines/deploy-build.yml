@@ -1,7 +1,7 @@
 
 steps:
 
-# download components
-- checkout: self
-  submodules: recursive
-  lfs: true
+  - checkout: self
+    submodules: recursive
+    lfs: true
+    path: ./deploy
