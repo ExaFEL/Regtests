@@ -7,7 +7,28 @@ steps:
     path: ./deploy
 
 
+
+
   - script: |
-        cd ./deploy
-        ./install_all.sh
-    displayName: build
+        git lfs install
+        git lfs pull
+        git submodule update --init
+    displayName: git-deps
+
+  - script: |
+        
+        # use absolute paths:
+        project_root=$(readlink -f $(dirname ${BASH_SOURCE[0]}))
+
+        $project_root/conda/install_conda.sh
+    displayName: build-conda
+
+
+
+
+
+
+        # - script: |
+        #       cd ./deploy
+        #       ./install_all.sh
+        #   displayName: build
