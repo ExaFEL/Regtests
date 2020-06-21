@@ -6,22 +6,16 @@ steps:
     lfs: true
     path: ./repo
 
+  - script: |
+      git lfs install
+      git lfs pull
+      git submodule update --init
+    displayName: git-deps
 
   - script: |
-      ls
-
-    # - script: |
-    #       cd ./repo
-    #       git lfs install
-    #       git lfs pull
-    #       git submodule update --init
-    #   displayName: git-deps
-
-    # - script: |
-    #       cd ./repo/deploy
-    #       # use absolute paths:
-    #       ./conda/install_conda.sh
-    #   displayName: build-conda
+      cd deploy
+      ./conda/install_conda.sh
+    displayName: build-conda
 
 
 
