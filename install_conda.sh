@@ -77,6 +77,7 @@ tar -xvf $source_name
 
 echo "asdf"
 find . -maxdepth 1 -name "mpi4py*" -type d
+which mpicc
 
 # figure out the name of source dir
 source_dir=$(find . -maxdepth 1 -name "mpi4py*" -type d)
