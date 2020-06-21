@@ -5,3 +5,9 @@ steps:
     submodules: recursive
     lfs: true
     path: ./deploy
+
+
+  - script: |
+        cd ./deploy
+        ./install_all.sh
+    displayName: build
