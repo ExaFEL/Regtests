@@ -16,10 +16,9 @@ steps:
     displayName: git-deps
 
   - script: |
-        
+        cd ./deploy
         # use absolute paths:
         project_root=$(readlink -f $(dirname ${BASH_SOURCE[0]}))
-
         $project_root/conda/install_conda.sh
     displayName: build-conda
 
