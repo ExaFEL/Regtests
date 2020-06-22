@@ -1,4 +1,5 @@
 stages:
+
 - stage: setup
   jobs:
   - job: checkout
@@ -12,28 +13,30 @@ stages:
         git lfs pull
         git submodule update --init
       displayName: git-deps
-    - publish: $(System.DefaultWorkingDirectory)/repo/deploy
-      artifact: DeployApp
-  - job: apt
-    steps:
-    - script: |
-        sudo apt install -y mpich
-    displayName: apt-install
-  - job: validate
-    dependsOn:
-    - checkout
-    - apt
-    steps:
-    - script: |
-        ls deploy
-        which mpicc
-    displayName: validated
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: "$(System.DefaultWorkingDirectory)"
+        ArtifactName: Deploy
+
 - stage: build
   jobs:
   - job: install_all
     steps:
+    - checkout: none
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        artifactName: Deploy
+        downloadPath: $(System.DefaultWorkingDirectory)
+    - script: |
+        sudo apt install -y mpich
+      displayName: apt-install
     - script: |
         cd deploy
-        ls
         ./install_all.sh
-    displayName: build
+      displayName: build
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: "$(System.DefaultWorkingDirectory)"
+        ArtifactName: Build
+  dependsOn: setup
+  condition: succeeded()
