@@ -23,5 +23,6 @@ stages:
     steps:
     - script: |
         cd deploy
+        ls
         ./install_all.sh
     displayName: build
