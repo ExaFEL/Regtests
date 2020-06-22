@@ -17,6 +17,15 @@ stages:
     - script: |
         sudo apt install -y mpich
     displayName: apt-install
+  - job: validate
+    dependsOn:
+    - checkout
+    - apt
+    steps:
+    - script: |
+        ls deploy
+        which mpicc
+    displayName: validated
 - stage: build
   jobs:
   - job: install_all
