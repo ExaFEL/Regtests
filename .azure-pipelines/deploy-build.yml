@@ -11,7 +11,9 @@ stages:
         git lfs install
         git lfs pull
         git submodule update --init
-    displayName: git-deps
+      displayName: git-deps
+    - publish: $(System.DefaultWorkingDirectory)/repo/deploy
+      artifact: DeployApp
   - job: apt
     steps:
     - script: |
