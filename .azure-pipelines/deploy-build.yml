@@ -13,9 +13,12 @@ stages:
         git lfs pull
         git submodule update --init
       displayName: git-deps
+    - script: |
+        tar cvf deploy.tar deploy
+      displayName: tar-deploy
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: "$(System.DefaultWorkingDirectory)"
+        PathtoPublish: "$(System.DefaultWorkingDirectory)/deploy.tar"
         ArtifactName: Deploy
 
 - stage: build
@@ -28,15 +31,21 @@ stages:
         artifactName: Deploy
         downloadPath: $(System.DefaultWorkingDirectory)
     - script: |
+        tar xvf deploy.tar
+      displayName: untar-deploy
+    - script: |
         sudo apt install -y mpich
       displayName: apt-install
     - script: |
         cd deploy
         ./install_all.sh
       displayName: build
+    - script: |
+        tar cvf deploy.tar deploy
+      displayName: tar-deploy
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: "$(System.DefaultWorkingDirectory)"
+        PathtoPublish: "$(System.DefaultWorkingDirectory)/deploy.tar"
         ArtifactName: Build
   dependsOn: setup
   condition: succeeded()
