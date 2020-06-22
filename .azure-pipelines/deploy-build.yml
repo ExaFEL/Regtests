@@ -6,29 +6,27 @@ steps:
     lfs: true
     path: ./repo
 
+
   - script: |
       git lfs install
       git lfs pull
       git submodule update --init
     displayName: git-deps
 
+
   - script: |
       sudo apt install -y mpich
     displayName: apt-install
 
 
+    # - script: |
+    #     cd deploy/conda
+    #     cp ../../install_conda.sh .
+    #     ./install_conda.sh
+    #   displayName: build-conda
+
+
   - script: |
-      cd deploy/conda
-      cp ../../install_conda.sh .
-      ./install_conda.sh
-    displayName: build-conda
-
-
-
-
-
-
-        # - script: |
-        #       cd ./deploy
-        #       ./install_all.sh
-        #   displayName: build
+      cd deploy
+      ./install_all.sh
+    displayName: build
