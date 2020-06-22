@@ -31,6 +31,7 @@ stages:
         artifactName: Deploy
         downloadPath: $(System.DefaultWorkingDirectory)
     - script: |
+        ls
         tar xvf deploy.tar
       displayName: untar-deploy
     - script: |
