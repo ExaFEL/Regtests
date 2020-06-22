@@ -32,12 +32,13 @@ stages:
         downloadPath: $(System.DefaultWorkingDirectory)
     - script: |
         ls
-        tar xvf deploy.tar
+        tar xvf Deploy/deploy.tar
       displayName: untar-deploy
     - script: |
         sudo apt install -y mpich
       displayName: apt-install
     - script: |
+        ls
         cd deploy
         ./install_all.sh
       displayName: build
