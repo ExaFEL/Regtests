@@ -1,32 +1,27 @@
-
-steps:
-
-  - checkout: self
-    submodules: recursive
-    lfs: true
-    path: ./repo
-
-
-  - script: |
-      git lfs install
-      git lfs pull
-      git submodule update --init
+stages:
+- stage: setup
+  jobs:
+  - job: checkout
+    steps:
+    - checkout: self
+      submodules: recursive
+      lfs: true
+      path: ./repo
+    - script: |
+        git lfs install
+        git lfs pull
+        git submodule update --init
     displayName: git-deps
-
-
-  - script: |
-      sudo apt install -y mpich
+  - job: apt
+    steps:
+    - script: |
+        sudo apt install -y mpich
     displayName: apt-install
-
-
-    # - script: |
-    #     cd deploy/conda
-    #     cp ../../install_conda.sh .
-    #     ./install_conda.sh
-    #   displayName: build-conda
-
-
-  - script: |
-      cd deploy
-      ./install_all.sh
+- stage: build
+  jobs:
+  - job: install_all
+    steps:
+    - script: |
+        cd deploy
+        ./install_all.sh
     displayName: build
