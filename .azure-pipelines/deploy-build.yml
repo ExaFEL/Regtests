@@ -40,6 +40,7 @@ stages:
     - script: |
         ls
         cd deploy
+        export SKIP_GIT=true
         ./install_all.sh
       displayName: build
     - script: |
