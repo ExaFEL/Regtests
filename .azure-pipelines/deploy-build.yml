@@ -31,14 +31,12 @@ stages:
         artifactName: Deploy
         downloadPath: $(System.DefaultWorkingDirectory)
     - script: |
-        ls
         tar xvf Deploy/deploy.tar
       displayName: untar-deploy
     - script: |
         sudo apt install -y mpich
       displayName: apt-install
     - script: |
-        ls
         cd deploy
         export SKIP_GIT=true
         ./install_all.sh
